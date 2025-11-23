@@ -3,7 +3,7 @@
 on:
   push:
     tags:
-      - 'v*'
+      - "v*"
 
 jobs:
   release:
@@ -24,22 +24,21 @@ jobs:
       - name: Get tag name
         id: tag
         run: |
-          echo "TAG_NAME=" >> 
-          echo "Tag is \"
+          echo "TAG_NAME=${GITHUB_REF##*/}" >> $GITHUB_ENV
 
       - name: Extract changelog for tag
         id: changelog
         run: |
-          TAG="\"
-          awk_cmd='BEGIN{p=0} /^## \\[/{ if (p==1) exit } /^## \\['""'\\]/{p=1; next} p{print}' CHANGELOG.md > /tmp/RELEASE_BODY || true
+          TAG="$TAG_NAME"
+          awk_cmd='BEGIN{p=0} /^## \[/{ if (p==1) exit } /^## \['"$TAG"'\]/{p=1; next} p{print}' CHANGELOG.md > /tmp/RELEASE_BODY || true
           if [ -s /tmp/RELEASE_BODY ]; then
-            echo "RELEASE_BODY<<EOF" >> 
-            cat /tmp/RELEASE_BODY >> 
-            echo "EOF" >> 
+            echo "RELEASE_BODY<<EOF" >> $GITHUB_ENV
+            cat /tmp/RELEASE_BODY >> $GITHUB_ENV
+            echo "EOF" >> $GITHUB_ENV
           else
-            echo "RELEASE_BODY<<EOF" >> 
-            echo "See CHANGELOG.md" >> 
-            echo "EOF" >> 
+            echo "RELEASE_BODY<<EOF" >> $GITHUB_ENV
+            echo "See CHANGELOG.md" >> $GITHUB_ENV
+            echo "EOF" >> $GITHUB_ENV
           fi
 
       - name: Create GitHub Release
