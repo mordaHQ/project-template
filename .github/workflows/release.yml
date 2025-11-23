@@ -1,0 +1,52 @@
+﻿name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      packages: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Get tag name
+        id: tag
+        run: |
+          echo "TAG_NAME=" >> 
+          echo "Tag is \"
+
+      - name: Extract changelog for tag
+        id: changelog
+        run: |
+          TAG="\"
+          awk_cmd='BEGIN{p=0} /^## \\[/{ if (p==1) exit } /^## \\['""'\\]/{p=1; next} p{print}' CHANGELOG.md > /tmp/RELEASE_BODY || true
+          if [ -s /tmp/RELEASE_BODY ]; then
+            echo "RELEASE_BODY<<EOF" >> 
+            cat /tmp/RELEASE_BODY >> 
+            echo "EOF" >> 
+          else
+            echo "RELEASE_BODY<<EOF" >> 
+            echo "See CHANGELOG.md" >> 
+            echo "EOF" >> 
+          fi
+
+      - name: Create GitHub Release
+        uses: ncipollo/release-action@v1
+        with:
+          tag: ${{ env.TAG_NAME }}
+          name: ${{ env.TAG_NAME }}
+          body: ${{ env.RELEASE_BODY }}
+          draft: false
+          prerelease: false
