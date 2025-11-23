@@ -14,7 +14,8 @@
     "lint": "eslint . --ext .ts",
     "format": "prettier --write .",
     "prepare": "husky install",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "vitest run"
+
   },
   "repository": {
     "type": "git",
@@ -34,6 +35,8 @@
     "@types/node": "^24.10.1",
     "@typescript-eslint/eslint-plugin": "^8.0.0",
     "@typescript-eslint/parser": "^8.0.0",
+    "@vitest/coverage-c8": "^0.33.0",
+    "@vitest/ui": "^4.0.13",
     "eslint": "^9.0.0",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-prettier": "^5.5.4",
@@ -41,7 +44,8 @@
     "lint-staged": "^16.2.7",
     "prettier": "^3.6.2",
     "ts-node": "^10.9.2",
-    "typescript": "^5.9.3"
+    "typescript": "^5.9.3",
+    "vitest": "^4.0.13"
   },
   "lint-staged": {
     "**/*.ts": [
