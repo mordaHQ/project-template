@@ -1,15 +1,13 @@
 {
   "name": "project-template",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Professional TypeScript project template",
   "main": "dist/index.js",
   "type": "commonjs",
-
   "directories": {
     "doc": "docs",
     "test": "tests"
   },
-
   "scripts": {
     "dev": "ts-node src/index.ts",
     "build": "tsc",
@@ -17,27 +15,23 @@
     "lint": "eslint . --ext .ts",
     "format": "prettier --write .",
     "prepare": "husky install",
-
     "test": "vitest run",
     "test:watch": "vitest",
     "test:ui": "vitest --ui",
-    "test:coverage": "vitest run --coverage"
+    "test:coverage": "vitest run --coverage",
+    "release": "standard-version"
   },
-
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mordaHQ/project-template.git"
   },
-
   "keywords": [],
   "author": "",
   "license": "ISC",
-
   "bugs": {
     "url": "https://github.com/mordaHQ/project-template/issues"
   },
   "homepage": "https://github.com/mordaHQ/project-template#readme",
-
   "devDependencies": {
     "@commitlint/cli": "^20.1.0",
     "@commitlint/config-conventional": "^20.0.0",
@@ -52,15 +46,14 @@
     "husky": "^8.0.0",
     "lint-staged": "^16.2.7",
     "prettier": "^3.6.2",
+    "standard-version": "^9.5.0",
     "ts-node": "^10.9.2",
     "typescript": "^5.9.3",
     "vitest": "^4.0.13"
   },
-
   "dependencies": {
     "execa": "^9.6.0"
   },
-
   "lint-staged": {
     "**/*.ts": [
       "eslint --fix",
