@@ -6,5 +6,5 @@ const msg = readFileSync(msgFile, "utf8").trim();
 
 execa("npx", ["commitlint", "--color"], {
   input: msg,
-  stdio: "inherit"
+  stdio: "inherit",
 });
