@@ -1,0 +1,18 @@
+﻿version: 2
+updates:
+  # 1. Обновление npm зависимостей
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    commit-message:
+      prefix: "deps"
+    open-pull-requests-limit: 5
+
+  # 2. Обновление GitHub Actions
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    commit-message:
+      prefix: "ci"
