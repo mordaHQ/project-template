@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.7](https://github.com/mordaHQ/project-template/compare/v1.0.4...v1.0.7) (2025-11-25)
+
+
+### Bug Fixes
+
+* correct .gitignore for Docusaurus ([610f389](https://github.com/mordaHQ/project-template/commit/610f3893fc279d07c2bfcea1dbb5517e269810a7))
+* update Docusaurus config ([8d4ec64](https://github.com/mordaHQ/project-template/commit/8d4ec64482c05c2900ee4b208da78b53facb9dd2))
+
 ### [1.0.6](https://github.com/mordaHQ/project-template/compare/v1.0.5...v1.0.6) (2025-11-24)
 
 ### [1.0.5](https://github.com/mordaHQ/project-template/compare/v1.0.4...v1.0.5) (2025-11-24)
