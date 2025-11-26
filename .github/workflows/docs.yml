@@ -1,25 +1,24 @@
-name: Deploy Docusaurus
+name: Deploy Docs
 
 on:
   push:
     branches:
       - main
-    paths:
-      - "docusaurus-build/**"
-      - ".github/workflows/docs.yml"
+
+permissions:
+  contents: write
 
 jobs:
-  build-and-deploy:
+  build:
     runs-on: ubuntu-latest
 
-    permissions:
-      contents: write
-
     steps:
-      - name: Checkout repository
+      - name: Checkout repo
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
-      - name: Setup Node.js
+      - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: 20
@@ -29,7 +28,7 @@ jobs:
           cd docusaurus-build
           npm ci
 
-      - name: Build Docusaurus
+      - name: Build docs
         run: |
           cd docusaurus-build
           npm run build
@@ -38,4 +37,5 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages
           publish_dir: docusaurus-build/build
