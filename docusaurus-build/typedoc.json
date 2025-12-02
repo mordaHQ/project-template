@@ -1,0 +1,8 @@
+﻿{
+  "entryPoints": ["src/index.ts"],
+  "out": "docs/api-auto",
+  "plugin": ["typedoc-plugin-markdown"],
+  "readme": "none",
+  "categorizeByGroup": true,
+  "sort": ["alphabetical"]
+}
