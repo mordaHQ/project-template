@@ -9,8 +9,11 @@ const config: Config = {
 
   future: { v4: true },
 
-  url: "https://mordahq.github.io",
-  baseUrl: "/project-template/",
+  // ✅ Cloudflare Pages domain
+  url: "https://project-template-bvv.pages.dev",
+
+  // ✅ Делаем сайт корневым, а не /project-template/
+  baseUrl: "/",
 
   organizationName: "mordaHQ",
   projectName: "project-template",
@@ -31,12 +34,12 @@ const config: Config = {
       {
         docs: {
           sidebarPath: "./sidebars.ts",
+
+          // можно оставить — не ломает
           editUrl:
             "https://github.com/mordaHQ/project-template/tree/main/docusaurus-build/",
         },
-        blog: {
-          showReadingTime: true,
-        },
+        blog: false, // ❗ отключаем блог, чтобы не мешал routes
         theme: {
           customCss: "./src/css/custom.css",
         },
@@ -60,7 +63,6 @@ const config: Config = {
           position: "left",
           label: "Docs",
         },
-        { to: "/blog", label: "Blog", position: "left" },
         {
           href: "https://github.com/mordaHQ/project-template",
           label: "GitHub",
@@ -79,7 +81,6 @@ const config: Config = {
         {
           title: "More",
           items: [
-            { label: "Blog", to: "/blog" },
             {
               label: "GitHub",
               href: "https://github.com/mordaHQ/project-template",
@@ -87,7 +88,6 @@ const config: Config = {
           ],
         },
       ],
-      // ❗ Полностью безопасная простая строка — без ©
       copyright:
         "Copyright " +
         new Date().getFullYear() +
