@@ -16,10 +16,19 @@ slorber:
   url: https://sebastienlorber.com
   image_url: https://github.com/slorber.png
   page:
-    # customize the url of the author page at /blog/authors/<permalink>
-    permalink: '/all-sebastien-lorber-articles'
+    permalink: "/all-sebastien-lorber-articles"
   socials:
     x: sebastienlorber
     linkedin: sebastienlorber
     github: slorber
     newsletter: https://thisweekinreact.com
+
+morda:
+  name: Morda Dev
+  title: Author of Project Template
+  url: https://github.com/mordaHQ
+  image_url: https://avatars.githubusercontent.com/u/183162001?v=4
+  page: true
+  socials:
+    github: mordaHQ
+    x: morda_dev
