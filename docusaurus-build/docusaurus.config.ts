@@ -9,10 +9,10 @@ const config: Config = {
 
   future: { v4: true },
 
-  // ✅ Cloudflare Pages domain
+  // Cloudflare Pages абсолютный URL
   url: "https://project-template-bvv.pages.dev",
 
-  // ✅ Делаем сайт корневым, а не /project-template/
+  // Сайт в корне домена
   baseUrl: "/",
 
   organizationName: "mordaHQ",
@@ -34,12 +34,19 @@ const config: Config = {
       {
         docs: {
           sidebarPath: "./sidebars.ts",
-
-          // можно оставить — не ломает
           editUrl:
             "https://github.com/mordaHQ/project-template/tree/main/docusaurus-build/",
         },
-        blog: false, // ❗ отключаем блог, чтобы не мешал routes
+
+        // ✅ Включаем блог
+        blog: {
+          path: "blog",
+          routeBasePath: "blog",
+          showReadingTime: true,
+          blogTitle: "Project Blog",
+          blogDescription: "Updates, releases and development notes",
+        },
+
         theme: {
           customCss: "./src/css/custom.css",
         },
@@ -64,6 +71,11 @@ const config: Config = {
           label: "Docs",
         },
         {
+          to: "/blog",
+          label: "Blog",
+          position: "left",
+        },
+        {
           href: "https://github.com/mordaHQ/project-template",
           label: "GitHub",
           position: "right",
@@ -81,6 +93,7 @@ const config: Config = {
         {
           title: "More",
           items: [
+            { label: "Blog", to: "/blog" },
             {
               label: "GitHub",
               href: "https://github.com/mordaHQ/project-template",
