@@ -27,12 +27,12 @@ jobs:
           cache: npm
 
       - name: Install root dependencies
-        run: npm install
+        run: npm ci
 
       - name: Install Docusaurus deps
         run: |
           cd docusaurus-build
-          npm install --legacy-peer-deps
+          npm ci --legacy-peer-deps
 
       - name: Type check Docusaurus
         run: |
