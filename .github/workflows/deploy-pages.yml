@@ -21,45 +21,45 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # 2. Node.js
+      # 2. Use Node.js 18
       - name: Use Node.js 18
         uses: actions/setup-node@v4
         with:
           node-version: 18
           cache: npm
 
-      # 3. Install root dependencies (package-lock.json отсутствует → ставим npm install)
+      # 3. Install root dependencies
       - name: Install root dependencies
         run: npm install
 
-      # 4. Install Docusaurus deps + typecheck
+      # 4. Install Docusaurus dependencies + typecheck
       - name: Install Docusaurus dependencies
         run: |
           cd docusaurus-build
-          npm ci --legacy-peer-deps
+          npm install --legacy-peer-deps
 
       - name: Type check (Docusaurus)
         run: |
           cd docusaurus-build
           npm run typecheck
 
-      # 5. Generate API docs (TypeDoc)
+      # 5. Generate API docs
       - name: Generate API docs (TypeDoc)
         run: npm run docs:api
 
-      # 6. Build Docusaurus website
+      # 6. Build Docusaurus
       - name: Build Docusaurus site
         run: |
           cd docusaurus-build
           npm run build
 
-      # 7. Upload artifact
+      # 7. Upload artifact for preview
       - name: Upload Pages build artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: docusaurus-build/build
 
-      # 8. Deploy (only main)
+      # 8. Deploy to Cloudflare Pages (ONLY on main)
       - name: Deploy to Cloudflare Pages
         if: github.ref == 'refs/heads/main'
         uses: cloudflare/pages-action@v1
