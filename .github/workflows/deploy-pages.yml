@@ -1,4 +1,4 @@
-﻿name: Build and Deploy Docs (Cloudflare Pages)
+name: Build and Deploy Docs (Cloudflare Pages)
 
 on:
   push:
