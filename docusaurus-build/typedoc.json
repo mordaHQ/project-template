@@ -1,8 +1,9 @@
 ﻿{
-  "entryPoints": ["src/index.ts"],
-  "out": "docs/api-auto",
+  "entryPoints": ["../src"],
+  "out": "./docs/api",
   "plugin": ["typedoc-plugin-markdown"],
-  "readme": "none",
-  "categorizeByGroup": true,
-  "sort": ["alphabetical"]
+  "hideBreadcrumbs": true,
+  "excludeExternals": true,
+  "excludePrivate": true,
+  "readme": "none"
 }
