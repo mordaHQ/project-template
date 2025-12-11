@@ -4,14 +4,10 @@ on:
   push:
     branches:
       - main
-  pull_request:
-    branches:
-      - main
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-
     permissions:
       contents: read
       id-token: write
@@ -27,17 +23,7 @@ jobs:
           cache: npm
 
       - name: Install root dependencies
-        run: npm install
-
-      - name: Install Docusaurus deps
-        run: |
-          cd docusaurus-build
-          npm install --legacy-peer-deps
-
-      - name: Type check Docusaurus
-        run: |
-          cd docusaurus-build
-          npm run typecheck
+        run: npm ci
 
       - name: Generate API docs (TypeDoc)
         run: npm run docs:api
@@ -45,6 +31,8 @@ jobs:
       - name: Build Docusaurus site
         run: |
           cd docusaurus-build
+          npm ci --legacy-peer-deps
+          npm run typecheck
           npm run build
 
       - name: Upload Pages build artifact
