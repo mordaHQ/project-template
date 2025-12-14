@@ -1,9 +1,9 @@
 ﻿{
-  "entryPoints": ["src/index.ts"],
-  "out": "docusaurus-build/docs/api-auto",
+  "entryPoints": ["./src"],
+  "out": "docs/api",
   "plugin": ["typedoc-plugin-markdown"],
-  "hideBreadcrumbs": true,
+  "readme": "none",
   "excludeExternals": true,
   "excludePrivate": true,
-  "readme": "none"
+  "hideBreadcrumbs": true
 }
