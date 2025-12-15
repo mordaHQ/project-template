@@ -9,10 +9,7 @@ const config: Config = {
 
   future: { v4: true },
 
-  // Cloudflare Pages абсолютный URL
   url: "https://project-template-bvv.pages.dev",
-
-  // Сайт в корне домена
   baseUrl: "/",
 
   organizationName: "mordaHQ",
@@ -38,10 +35,7 @@ const config: Config = {
             "https://github.com/mordaHQ/project-template/tree/main/docusaurus-build/",
         },
 
-        // ✅ Включаем блог
         blog: {
-          path: "blog",
-          routeBasePath: "blog",
           showReadingTime: true,
           blogTitle: "Project Blog",
           blogDescription: "Updates, releases and development notes",
@@ -69,6 +63,12 @@ const config: Config = {
           sidebarId: "tutorialSidebar",
           position: "left",
           label: "Docs",
+        },
+        {
+          type: "docSidebar",
+          sidebarId: "apiSidebar",
+          position: "left",
+          label: "API",
         },
         {
           to: "/blog",
