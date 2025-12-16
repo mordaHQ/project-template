@@ -1,6 +1,6 @@
 ﻿---
 title: API Reference
-sidebar_position: 0
+description: Public API documentation
 ---
 
 ## 📦 Project Template API
