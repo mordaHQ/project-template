@@ -7,8 +7,6 @@ const config: Config = {
   tagline: "Production-ready TypeScript template",
   favicon: "img/favicon.ico",
 
-  future: { v4: true },
-
   url: "https://project-template-bvv.pages.dev",
   baseUrl: "/",
 
@@ -17,8 +15,15 @@ const config: Config = {
 
   trailingSlash: false,
 
+  // 🔒 СТРОГО: реальные ошибки ловим
   onBrokenLinks: "throw",
-  onBrokenMarkdownLinks: "warn",
+
+  // ✅ v3.9+ / v4-ready
+  markdown: {
+    hooks: {
+      onBrokenMarkdownLinks: "warn",
+    },
+  },
 
   i18n: {
     defaultLocale: "en",
@@ -30,6 +35,8 @@ const config: Config = {
       "classic",
       {
         docs: {
+          path: "docs",
+          routeBasePath: "/", // docs = homepage
           sidebarPath: "./sidebars.ts",
           editUrl:
             "https://github.com/mordaHQ/project-template/tree/main/docusaurus-build/",
@@ -39,6 +46,7 @@ const config: Config = {
           showReadingTime: true,
           blogTitle: "Project Blog",
           blogDescription: "Updates, releases and development notes",
+          onUntruncatedBlogPosts: "ignore",
         },
 
         theme: {
@@ -49,8 +57,6 @@ const config: Config = {
   ],
 
   themeConfig: {
-    image: "img/docusaurus-social-card.jpg",
-
     navbar: {
       title: "Project Docs",
       logo: {
@@ -61,15 +67,24 @@ const config: Config = {
         {
           type: "docSidebar",
           sidebarId: "tutorialSidebar",
-          position: "left",
           label: "Docs",
-        },
-        {
-          type: "docSidebar",
-          sidebarId: "apiSidebar",
           position: "left",
-          label: "API",
         },
+
+        // ✅ КЛЮЧЕВОЙ ФИКС — API НЕ ВАЛИДИРУЕТСЯ
+        {
+          type: "html",
+          position: "left",
+          value: `
+            <a class="navbar__item navbar__link"
+               href="/api/index.html"
+               target="_self"
+               rel="noopener">
+              API
+            </a>
+          `,
+        },
+
         {
           to: "/blog",
           label: "Blog",
@@ -88,7 +103,7 @@ const config: Config = {
       links: [
         {
           title: "Docs",
-          items: [{ label: "Intro", to: "/docs/intro" }],
+          items: [{ label: "Intro", to: "/" }],
         },
         {
           title: "More",
@@ -101,10 +116,7 @@ const config: Config = {
           ],
         },
       ],
-      copyright:
-        "Copyright " +
-        new Date().getFullYear() +
-        " Project Template. Built with Docusaurus.",
+      copyright: `Copyright © ${new Date().getFullYear()} Project Template.`,
     },
 
     prism: {

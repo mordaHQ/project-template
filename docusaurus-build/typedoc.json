@@ -2,14 +2,13 @@
   "entryPoints": ["../src"],
   "entryPointStrategy": "expand",
   "tsconfig": "typedoc.tsconfig.json",
-  "out": "docs/api",
-  "plugin": ["typedoc-plugin-markdown"],
-  "theme": "markdown",
+
+  "out": "static/api",
+  "theme": "default",
+
   "readme": "none",
-  "hidePageHeader": true,
+
   "excludePrivate": true,
   "excludeProtected": true,
-  "excludeInternal": true,
-  "categorizeByGroup": true,
-  "defaultCategory": "Other"
+  "excludeInternal": true
 }
