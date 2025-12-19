@@ -1,0 +1,28 @@
+{
+  "$schema": "https://typedoc.org/schema.json",
+
+  "entryPoints": ["../src/index.ts"],
+  "entryPointStrategy": "resolve",
+
+  "out": "static/api",
+
+  "name": "Project Template API",
+
+  "excludePrivate": true,
+  "excludeProtected": true,
+  "excludeInternal": true,
+
+  "excludeExternals": true,
+  "excludeNotDocumented": true,
+
+  "includeVersion": true,
+
+  "categorizeByGroup": true,
+  "sort": ["source-order"],
+
+  "readme": "none",
+
+  "plugin": [],
+
+  "tsconfig": "../tsconfig.json"
+}
