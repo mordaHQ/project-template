@@ -1,6 +1,6 @@
 {
   "name": "project-template",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "Production-ready TypeScript SDK with a strict public API",
   "license": "ISC",
   "type": "module",
