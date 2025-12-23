@@ -38,7 +38,7 @@
  *
  * @group Types
  */
-export type { User, ApiResult } from "./types/user";
+export type { User, ApiResult } from "./types/user.js";
 
 /* ============================================================================
  * Functions (Public)
@@ -50,4 +50,4 @@ export type { User, ApiResult } from "./types/user";
  *
  * @group Functions
  */
-export { getUser, sumAges } from "./modules/user";
+export { getUser, sumAges } from "./modules/user.js";

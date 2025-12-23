@@ -1,5 +1,5 @@
 {
-  "name": "project-template",
+  "name": "@morda-dev/project-template",
   "version": "1.2.0",
   "description": "Production-ready TypeScript SDK with a strict public API",
   "license": "ISC",
@@ -16,9 +16,12 @@
     "dist"
   ],
   "sideEffects": false,
+  "publishConfig": {
+    "access": "public"
+  },
   "repository": {
     "type": "git",
-    "url": "https://github.com/mordaHQ/project-template"
+    "url": "git+https://github.com/mordaHQ/project-template.git"
   },
   "keywords": [
     "typescript",
