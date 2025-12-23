@@ -1,25 +1,72 @@
-import tseslint from "@typescript-eslint/eslint-plugin";
 import tsParser from "@typescript-eslint/parser";
-import prettierPlugin from "eslint-plugin-prettier";
+import tsPlugin from "@typescript-eslint/eslint-plugin";
 
 export default [
+  // ----------------------------
+  // 1️⃣ Global ignores
+  // ----------------------------
+  {
+    ignores: [
+      "node_modules/**",
+      "dist/**",
+      "coverage/**",
+      "docusaurus-build/**",
+      ".docusaurus/**",
+      "vitest.config.ts",
+    ],
+  },
+
+  // ----------------------------
+  // 2️⃣ TypeScript base
+  // ----------------------------
   {
     files: ["**/*.ts"],
-    ignores: ["dist/**"],
+
     languageOptions: {
       parser: tsParser,
       parserOptions: {
-        ecmaVersion: 2021,
+        project: "./tsconfig.eslint.json",
+        tsconfigRootDir: process.cwd(),
         sourceType: "module",
       },
     },
+
     plugins: {
-      "@typescript-eslint": tseslint,
-      prettier: prettierPlugin,
+      "@typescript-eslint": tsPlugin,
     },
+
     rules: {
-      ...tseslint.configs.recommended.rules,
-      "prettier/prettier": "error",
+      // ❌ Запрещаем export *
+      "no-restricted-syntax": [
+        "error",
+        {
+          selector: "ExportAllDeclaration",
+          message:
+            "❌ export * is forbidden. Public API must be explicitly declared in src/index.ts",
+        },
+      ],
+    },
+  },
+
+  // ----------------------------
+  // 3️⃣ Guard: запрещаем consumer-доступ к internal
+  // ----------------------------
+  {
+    files: ["tests/**/*.ts"],
+
+    rules: {
+      "no-restricted-imports": [
+        "error",
+        {
+          patterns: [
+            {
+              group: ["../src/modules/*", "../src/types/*"],
+              message:
+                "❌ Tests must import ONLY from public API (src/index.ts)",
+            },
+          ],
+        },
+      ],
     },
   },
 ];

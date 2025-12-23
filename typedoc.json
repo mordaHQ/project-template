@@ -1,9 +1,6 @@
 ﻿{
-  "entryPoints": ["./src"],
-  "out": "docs/api",
-  "plugin": ["typedoc-plugin-markdown"],
-  "readme": "none",
-  "excludeExternals": true,
-  "excludePrivate": true,
-  "hideBreadcrumbs": true
+  "entryPoints": ["src/index.ts"],
+  "out": "static/api",
+  "stripInternal": true,
+  "excludeInternal": true
 }

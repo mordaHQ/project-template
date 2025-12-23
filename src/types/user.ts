@@ -1,10 +1,25 @@
-﻿export type User = {
-  id: string;
+﻿/**
+ * User entity.
+ *
+ * @public
+ */
+export interface User {
+  id: number;
   name: string;
   age: number;
-};
+}
 
-export type ApiResult<T> = {
-  success: boolean;
-  data: T;
-};
+/**
+ * Generic API result wrapper.
+ *
+ * @public
+ */
+export type ApiResult<T> =
+  | {
+      ok: true;
+      data: T;
+    }
+  | {
+      ok: false;
+      error: string;
+    };
