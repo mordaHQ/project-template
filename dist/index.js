@@ -1,3 +1,10 @@
-"use strict";
-console.log("TypeScript project template is ready!");
-// husky test
+/**
+ * Project Template — Public API
+ *
+ * @packageDocumentation
+ */
+/* ============================================================================
+ * Functions (Public)
+ * ============================================================================
+ */
+export { getUser, sumAges } from "./modules/user.js";

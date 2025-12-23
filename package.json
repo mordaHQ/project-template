@@ -1,67 +1,40 @@
 {
   "name": "@morda-dev/project-template",
-  "version": "1.2.0",
-  "description": "Production-ready TypeScript SDK with a strict public API",
+  "version": "0.1.1",
+  "description": "Production-ready TypeScript SDK template with a strict public API",
   "license": "ISC",
   "type": "module",
+
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
+
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.js"
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
     }
   },
+
   "files": [
     "dist"
   ],
+
   "sideEffects": false,
-  "publishConfig": {
-    "access": "public"
+
+  "engines": {
+    "node": ">=18"
   },
+
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mordaHQ/project-template.git"
+    "url": "https://github.com/mordaHQ/project-template.git"
   },
-  "keywords": [
-    "typescript",
-    "sdk",
-    "library",
-    "public-api",
-    "ci-cd",
-    "template"
-  ],
+
   "scripts": {
-    "build": "tsc -p tsconfig.build.json",
-    "api:extract": "api-extractor run --local",
-    "typecheck": "tsc -p tsconfig.eslint.json --noEmit",
-    "lint": "eslint .",
-    "format": "prettier --write .",
-    "test": "vitest run",
-    "test:watch": "vitest",
-    "test:ui": "vitest --ui",
-    "test:coverage": "vitest run --coverage",
-    "release": "standard-version"
+    "build": "tsc -p tsconfig.build.json"
   },
-  "lint-staged": {
-    "*.{ts,tsx}": [
-      "eslint --fix"
-    ],
-    "*.{json,md,yml,yaml}": [
-      "prettier --write"
-    ]
-  },
+
   "devDependencies": {
-    "@microsoft/api-extractor": "^7.55.2",
-    "@typescript-eslint/eslint-plugin": "^8.50.0",
-    "@typescript-eslint/parser": "^8.50.0",
-    "@vitest/coverage-v8": "^4.0.13",
-    "@vitest/ui": "^4.0.16",
-    "eslint": "^9.39.1",
-    "lint-staged": "^16.2.7",
-    "prettier": "^3.6.2",
-    "standard-version": "^9.5.0",
-    "typescript": "^5.9.3",
-    "vitest": "^4.0.16"
+    "typescript": "^5.9.3"
   }
 }
